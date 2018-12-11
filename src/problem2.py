@@ -206,7 +206,7 @@ def problem2b(rect, n, delta, win):
     for k in range(n):
         x_2 = x - x1
         y_2 = y - y1
-        
+
 
 # -----------------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
