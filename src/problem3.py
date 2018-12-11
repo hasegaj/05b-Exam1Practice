@@ -3,8 +3,8 @@ PRACTICE Exam 1, problem 3.
 
 Authors: David Mutchler, Vibha Alangar, Matt Boutell, Dave Fisher,
          Valerie Galluzzi, Mark Hays, Amanda Stouder, Aaron Wilkin,
-         their colleagues, and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues, and Josiah Hasegawa.
+"""  # DO: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -38,7 +38,7 @@ def main():
 def run_test_problem3a():
     """ Tests the   problem3a   function. """
     # -------------------------------------------------------------------------
-    # TODO: 2. Implement this TEST function.
+    # DO: 2. Implement this TEST function.
     #   It TESTS the  problem1a  function defined below.
     #   Include at least **   5   ** tests (we wrote four for you).
     # -------------------------------------------------------------------------
@@ -86,6 +86,7 @@ def run_test_problem3a():
 
     # Window 3:
     title = 'Problem 3a. Test 4: Start at (30, 30), 20 lines'
+    title += 'test 5: start at (20, 47), 13 lines'
     window3 = rg.RoseWindow(450, 300, title)
 
     # Test 4 (it is on window 3):
@@ -95,6 +96,15 @@ def run_test_problem3a():
     print()
     print('Test 4 expected:', expected)
     print('       actual:  ', answer)
+
+    # test 5:
+    point = rg.Point(20, 47)
+    expected = 91
+    answer = problem3a(window3, point, 13)
+    print()
+    print('test 5 expected:', expected)
+    print('     actual: ', answer)
+
 
     window3.close_on_mouse_click()
 
@@ -146,6 +156,25 @@ def problem3a(window, point, n):
     #    DIFFICULTY:      7 or 8
     #    TIME ESTIMATE:   20 to 35 minutes.
     # -------------------------------------------------------------------------
+    point2 = rg.Point(point.x, point.y + 50)
+    count = 0
+    line = rg.Line(point, point2)
+    line.thickness = 1
+    for k in range(n):
+        line = rg.Line(point, point2)
+        if line.thickness <= 11:
+            line.thickness = k + 2
+        else:
+            line.thickness = 13
+        count = count + line.thickness
+        line.attach_to(window)
+        window.render()
+        point.x = point.x + 20
+        point.y = point.y + 10
+        point2.x = point2.x + 20
+        point2.y = point2.y + 10
+
+    return count
 
 
 def run_test_problem3b():
