@@ -344,7 +344,15 @@ def problem0c(circle, n, window):
       :type n: int
       :type window: rg.RoseWindow
     """
-    
+    r = circle.center
+    t = circle.radius
+    circle.attach_to(window)
+    for k in range(n):
+        r.x = r.x + 2*t
+        circle_2 = rg.Circle(r.x, r.y)
+        circle_2.attach_to(window)
+        window.render(.5)
+    window.render()
     # -------------------------------------------------------------------------
     # TODO: 5. Implement and test this function.
     #          Tests have been written for you (above).
